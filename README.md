@@ -2,6 +2,8 @@
 
 A small collection of geometry utilities and algorithms for 3D computational geometry.
 
+⚠️ **Warning**: This code is currently in an unstable state and should not be used in production environments. The API may change without notice and there may be bugs or incomplete implementations.
+
 ## Features
 
 - **Primitive Geometry**: Points, lines, triangles, rays, segments, and axis-aligned bounding boxes
