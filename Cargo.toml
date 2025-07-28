@@ -1,0 +1,27 @@
+[package]
+name = "geometry"
+version = "0.1.0"
+edition = "2021"
+description = "A small collection of geometry utilities and algorithms"
+license = "MIT-0"
+repository = "https://github.com/your-username/geometry"
+keywords = ["geometry", "mesh", "triangle", "3d"]
+categories = ["algorithms", "data-structures"]
+
+[dependencies]
+nalgebra = { version = "0.33.2", features = ["proptest-support"] }
+ordered-float = "4.6.0"
+union-find = "0.4.3"
+parry3d-f64 = "0.18.0"
+itertools = "0.14.0"
+qhull = "0.3.1"
+petgraph = "0.7.1"
+proptest-derive = "0.5.1"
+proptest = "1.6.0"
+
+[dev-dependencies]
+proptest = "1.6.0"
+proptest-derive = "0.5.1"
+
+[features]
+default = [] 
