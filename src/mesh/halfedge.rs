@@ -1,5 +1,5 @@
-use crate::TriangleEdge;
 use crate::mesh::trimesh::{FaceIndex, IndexTriangle, TriangleMesh, VertexIndex};
+use crate::TriangleEdge;
 use nalgebra::Point3;
 use std::collections::HashMap;
 
@@ -199,7 +199,11 @@ impl HalfEdgeTopology {
         std::iter::successors(Some(first_edge), move |&e| {
             // By taking the twin then the next, we can follow the edges around the vertex.
             let next = self.next(self.twin(e));
-            if next == first_edge { None } else { Some(next) }
+            if next == first_edge {
+                None
+            } else {
+                Some(next)
+            }
         })
     }
 }
@@ -323,7 +327,7 @@ pub fn ab_bc_ca_to_halfedge(
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
-    use crate::geometry::proptest::arbitrary_convex_hull;
+    use crate::proptest::arbitrary_convex_hull;
     use proptest::proptest;
 
     proptest! {

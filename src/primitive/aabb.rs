@@ -1,4 +1,4 @@
-use nalgebra::{Point3, Vector3, center};
+use nalgebra::{center, Point3, Vector3};
 
 /// Axis-Aligned Bounding Box (AABB) structure.
 #[derive(Debug, Clone, Copy, PartialEq)]

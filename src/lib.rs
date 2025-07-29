@@ -10,16 +10,16 @@ pub mod mesh;
 pub mod mesh_shortest_paths;
 pub mod primitive;
 
-#[cfg(test)]
+#[cfg(feature = "proptest")]
 pub mod proptest;
 
 // Re-export commonly used types
-pub use primitive::triangle::TriangleEdge;
-pub use primitive::triangle::Triangle;
+pub use mesh::convex_hull::compute_chull;
+pub use mesh::halfedge::{HalfEdgeIndex, HalfEdgeTopology};
+pub use mesh::trimesh::{FaceIndex, IndexTriangle, MeshSurfacePoint, TriangleMesh, VertexIndex};
 pub use primitive::aabb::Aabb;
+pub use primitive::infinite_triangle::InfiniteTriangle;
 pub use primitive::ray::Ray;
 pub use primitive::segment::Segment;
-pub use primitive::infinite_triangle::InfiniteTriangle;
-pub use mesh::trimesh::{TriangleMesh, MeshSurfacePoint, VertexIndex, FaceIndex, IndexTriangle};
-pub use mesh::halfedge::{HalfEdgeIndex, HalfEdgeTopology};
-pub use mesh::convex_hull::compute_chull; 
+pub use primitive::triangle::Triangle;
+pub use primitive::triangle::TriangleEdge;

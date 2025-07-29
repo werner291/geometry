@@ -4,10 +4,10 @@
 
 #![allow(unused)]
 
-use crate::intersection::{EdgePoint, ray_segment_intersection};
-use crate::intersection::{RaySegmentIntersection, parametric_line_intersection};
+use crate::intersection::{parametric_line_intersection, RaySegmentIntersection};
+use crate::intersection::{ray_segment_intersection, EdgePoint};
 use crate::mesh::halfedge::{
-    HalfEdgeIndex, HalfEdgeTopology, ab_bc_ca_to_halfedge, halfedge_to_ab_bc_ca,
+    ab_bc_ca_to_halfedge, halfedge_to_ab_bc_ca, HalfEdgeIndex, HalfEdgeTopology,
 };
 use crate::mesh::trimesh::MeshSurfacePoint;
 use crate::mesh::trimesh::{TriangleMesh, VertexIndex};
@@ -21,7 +21,7 @@ use crate::primitive::segment::Segment;
 // use crate::visualizations::common::render_utils::ConvertThreeD;
 // use crate::visualizations::common::render_utils::{Visualize, line_segments_mesh};
 use itertools::Itertools;
-use nalgebra::{Const, OPoint, OVector, Point3, Unit, Vector3, distance};
+use nalgebra::{distance, Const, OPoint, OVector, Point3, Unit, Vector3};
 use ordered_float::OrderedFloat;
 use parry3d_f64::shape::TriMesh;
 use petgraph::prelude::UnGraph;
@@ -847,16 +847,14 @@ fn rotate_window_over_edge(
             parametric_line_intersection(right_ray.origin, *right_ray.dir, edge.a, edge.b - edge.a);
 
         if let Some([t1, t2]) = left_intersection {
-            assert!(
-                (-ray_segment_intersection_tolerance..=1.0 + ray_segment_intersection_tolerance)
-                    .contains(&t2)
-            );
+            assert!((-ray_segment_intersection_tolerance
+                ..=1.0 + ray_segment_intersection_tolerance)
+                .contains(&t2));
         }
         if let Some([t1, t2]) = right_intersection {
-            assert!(
-                (-ray_segment_intersection_tolerance..=1.0 + ray_segment_intersection_tolerance)
-                    .contains(&t2)
-            );
+            assert!((-ray_segment_intersection_tolerance
+                ..=1.0 + ray_segment_intersection_tolerance)
+                .contains(&t2));
         }
 
         // If the above are None they're just parallel. That's fine; this is just a santiy check.
@@ -1405,10 +1403,10 @@ fn retrace_shell_path(
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::geometry::mesh::convex_hull::compute_chull;
-    use crate::geometry::mesh::trimesh::FaceIndex;
-    use crate::geometry::primitive::triangle::TriangleEdge;
-    use crate::geometry::proptest::{
+    use crate::mesh::convex_hull::compute_chull;
+    use crate::mesh::trimesh::FaceIndex;
+    use crate::primitive::triangle::TriangleEdge;
+    use crate::proptest::{
         arbitrary_convex_hull, arbitrary_point_on_arbitrary_chull,
         arbitrary_point_pair_on_arbitrary_chull,
     };

@@ -1,5 +1,5 @@
 use crate::mesh::trimesh::{
-    IndexTriangle, TriangleMesh, VertexIndex, dedup_points_vec, deduplicate_vertices,
+    dedup_points_vec, deduplicate_vertices, IndexTriangle, TriangleMesh, VertexIndex,
 };
 use crate::primitive::triangle::Triangle;
 use itertools::Itertools;
@@ -244,7 +244,7 @@ fn triangulate_polygon(vertices: &[Point3<f64>]) -> Vec<Triangle> {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
-    use crate::geometry::proptest::arbitrary_points;
+    use crate::proptest::arbitrary_points;
     use proptest::prelude::*;
     use std::collections::HashSet;
 

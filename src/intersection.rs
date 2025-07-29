@@ -112,8 +112,8 @@ pub fn ray_segment_intersection(ray: Ray, segment: Segment) -> RaySegmentInterse
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::geometry::proptest::arbitrary_point;
-    use crate::geometry::proptest::arbitrary_unit_vector;
+    use crate::proptest::arbitrary_point;
+    use crate::proptest::arbitrary_unit_vector;
     use proptest::prelude::*;
 
     proptest! {
