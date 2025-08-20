@@ -82,4 +82,12 @@ impl Aabb {
     pub fn max_squared_distance(&self, from_point: &Point3<f64>) -> f64 {
         ((self.center() - from_point).abs() + self.half_extents()).norm_squared()
     }
+
+    /// Create a version inflated by a given amount.
+    pub fn inflated(&self, amount: f64) -> Self {
+        Self {
+            min: self.min - Vector3::new(amount, amount, amount),
+            max: self.max + Vector3::new(amount, amount, amount),
+        }
+    }
 }
